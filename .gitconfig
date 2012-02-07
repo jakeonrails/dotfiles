@@ -1,0 +1,13 @@
+[user]
+	name = Jake Moffatt
+	email = jakeonrails@gmail.com
+[rerere]
+	enabled = true
+[rebase]
+	autosquash = true
+[push]
+	default = nothing
+[ui]
+	color = true
+[color]
+	ui = true
