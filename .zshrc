@@ -40,11 +40,14 @@ source $ZSH/oh-my-zsh.sh
 export PATH=/usr/local/bin:$PATH
 
 # Add custom git commands to the path
-export PATH=~/Code/scripts/bin:$PATH
+export PATH=~/scripts/bin:$PATH
+
+# Terminal tab title:
+precmd () { print -Pn "\e]2;%~\a" } 
 
 # Rails and Bash aliases
 alias ll='ls -hal'
-alias rake='bundle exec rake'
+alias rake='noglob bundle exec rake'
 alias rspec='bundle exec rspec'
 alias devlog='tail -f log/development.log'
 alias testlog='tail -f log/test.log'
@@ -58,3 +61,13 @@ alias aparmentlistproduction='cd ~/Code/production/apartmentlist'
 alias seniorsproduction='cd ~/Code/production/senior'
 alias homeservicesproduction='cd ~/Code/production/homeservices'
 
+alias ..='cd ..'
+alias cd..='cd ..'
+
+alias g='git status'
+alias changelog='git log `git log -1 --format=%H -- CHANGELOG*`..; cat CHANGELOG*'
+alias headmaster='git push heroku HEAD:master'
+alias dumbledore='headmaster'
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+alias mein='mine'
