@@ -6,8 +6,28 @@
 [rebase]
 	autosquash = true
 [push]
-	default = nothing
+	default = upstream
 [ui]
 	color = true
 [color]
 	ui = true
+[alias]
+	upstream-rebase = upstream-rebase
+	upstream-push = upstream-push
+	code-review = code-review
+	st = status
+	verbs = verbs
+	make-branch = =
+	share-branch = =
+	switch = !legit switch \"$@\"
+	branches = !legit branches
+	sprout = !legit sprout \"$@\"
+	unpublish = !legit unpublish \"$@\"
+	harvest = !legit harvest \"$@\"
+	sync = !legit sync \"$@\"
+	publish = !legit publish \"$@\"
+	graft = !legit graft \"$@\"
+	refresh = upstream-rebase
+	merge-into = merge-into
+[core]
+	excludesfile = /Users/jake/.gitignore

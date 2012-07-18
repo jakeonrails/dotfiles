@@ -29,18 +29,12 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git heroku rails osx jakeonrails)
+plugins=(git git-flow heroku rails osx jakeonrails battery)
 
 source $ZSH/oh-my-zsh.sh
 
 # Source RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-# Ensure brew installed apps have precedence (important for Postgres)
-export PATH=/usr/local/bin:$PATH
-
-# Add custom git commands to the path
-export PATH=~/scripts/bin:$PATH
 
 # Terminal tab title:
 precmd () { print -Pn "\e]2;%~\a" } 
@@ -53,21 +47,33 @@ alias devlog='tail -f log/development.log'
 alias testlog='tail -f log/test.log'
 alias grepoku='heroku logs --tail | grep '
 
-# Project directory aliases
-alias apartmentlist='cd ~/Code/apartmentlist'
-alias seniors='cd ~/Code/senior'
-alias homeservices='cd ~/Code/homeservices'
-alias aparmentlistproduction='cd ~/Code/production/apartmentlist'
-alias seniorsproduction='cd ~/Code/production/senior'
-alias homeservicesproduction='cd ~/Code/production/homeservices'
-
 alias ..='cd ..'
 alias cd..='cd ..'
 
 alias g='git status'
-alias changelog='git log `git log -1 --format=%H -- CHANGELOG*`..; cat CHANGELOG*'
-alias headmaster='git push heroku HEAD:master'
-alias dumbledore='headmaster'
+alias hps='heroku ps'
+alias hscale='heroku ps:scale'
+alias hcon='heroku run console'
+alias hrake='heroku run rake'
+alias hlogs='heroku logs --tail'
+alias newrelic='heroku addons:open newrelic'
+alias hopen='heroku addons:open'
+alias h='heroku'
+alias hpush='git push heroku HEAD:master'
+alias opush='git push origin HEAD'
+alias gref='git refresh'
+alias grefmast='git checkout master && git refresh'
+alias hsql='heroku pg:psql'
+alias journal='echo "\n`date`: $1\n\n" >> ~/journal.txt'
+alias start-mongo='mongod run --config /usr/local/etc/mongod.conf'
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-alias mein='mine'
+
+# Add custom git commands to the path
+export PATH=~/Code/scripts/bin:$PATH
+
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# Ensure brew installed apps have precedence (important for Postgres)
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
+
