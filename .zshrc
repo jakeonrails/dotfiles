@@ -55,6 +55,7 @@ alias hps='heroku ps'
 alias hscale='heroku ps:scale'
 alias hcon='heroku run console'
 alias hrake='heroku run rake'
+alias hmigrate='heroku run rake db:migrate'
 alias hlogs='heroku logs --tail'
 alias newrelic='heroku addons:open newrelic'
 alias hopen='heroku addons:open'
@@ -66,7 +67,7 @@ alias grefmast='git checkout master && git refresh'
 alias hsql='heroku pg:psql'
 alias journal='echo "\n`date`: $1\n\n" >> ~/journal.txt'
 alias start-mongo='mongod run --config /usr/local/etc/mongod.conf'
-
+alias migrate='rake db:migrate'
 
 # Add custom git commands to the path
 export PATH=~/Code/scripts/bin:$PATH
