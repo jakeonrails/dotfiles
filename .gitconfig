@@ -29,5 +29,6 @@
 	graft = !legit graft \"$@\"
 	refresh = upstream-rebase
 	merge-into = merge-into
+	conflicts = !git ls-files -u | cut -f 2 | sort -u
 [core]
 	excludesfile = /Users/jake/.gitignore

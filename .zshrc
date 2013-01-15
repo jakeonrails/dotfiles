@@ -59,15 +59,21 @@ alias hmigrate='heroku run rake db:migrate'
 alias hlogs='heroku logs --tail'
 alias newrelic='heroku addons:open newrelic'
 alias hopen='heroku addons:open'
+alias hpgstats='heroku pg:cachehit; heroku pg:indexusage'
 alias h='heroku'
 alias hpush='git push heroku HEAD:master'
 alias opush='git push origin HEAD'
 alias gref='git refresh'
 alias grefmast='git checkout master && git refresh'
+alias grefdev='git checkout dev && git refresh'
 alias hsql='heroku pg:psql'
 alias journal='echo "\n`date`: $1\n\n" >> ~/journal.txt'
 alias start-mongo='mongod run --config /usr/local/etc/mongod.conf'
 alias migrate='rake db:migrate'
+alias guard='bundle exec guard'
+
+# http://devblog.springest.com/a-script-to-remove-old-git-branches
+alias cleangit='git branch --merged | grep -v ''dev$'' | grep -v ''stable$'' | xargs git branch -d'
 
 # Add custom git commands to the path
 export PATH=~/Code/scripts/bin:$PATH
@@ -77,4 +83,5 @@ export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 # Ensure brew installed apps have precedence (important for Postgres)
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-
+# Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
